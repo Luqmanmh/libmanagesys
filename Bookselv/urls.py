@@ -22,7 +22,8 @@ urlpatterns = [
     path('fileedit/<int:file_root>/<int:book_id>/', views.fileedit, name='fileedit'),
     path('manage/s/', views.search_file, name='search'),
     path('online/s', views.search_fileu, name='searchon'),
-    path('pdf/<int:file_id>/', views.view_pdf, name='view_pdf'),
+    path('book/<int:id>/', views.book_detail, name='book_detail'),
+    
 ]
 
 if settings.DEBUG:

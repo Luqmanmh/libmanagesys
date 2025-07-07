@@ -46,7 +46,7 @@
 
                 <div class="popform" id="fileform">
                     <div class="btn_cancel">
-                        <button type="button" class="btn_cancel" data-target="#fileform">X</button>
+                        <button type="button" class="btn_cancel" data-target="#fileform" id="btn_cancel">X</button>
                     </div>
                     <form action="/uploadfile/{{ root }}" method="POST" class="form-container"
                         enctype="multipart/form-data" style="text-align: center;">
@@ -67,7 +67,7 @@
 
                 <div class="popform" id="folderform">
                     <div class="btn_cancel">
-                        <button type="button" class="btn_cancel" data-target="#folderform">X</button>
+                        <button type="button" class="btn_cancel" data-target="#folderform" id="btn_cancel">X</button>
                     </div>
                     <form action="/createfolder/{{ root }}" method="POST" class="form-container"
                         enctype="multipart/form-data">
@@ -104,6 +104,7 @@
                 <th>Nama</th>
                 <th>Penulis</th>
                 <th>Penerbit</th>
+                <th>DDC</th>
                 <th>Jumlah</th>
                 <th>Tanggal Penambahan</th>
                 <th>Pindah</th>
@@ -130,7 +131,7 @@
 
                         <div class="popform" id="updfold{{i.id}}">
                             <div class="btn_cancel">
-                                <button type="button" class="btn_cancel" data-target="#updfold{{i.id}}">X</button>
+                                <button type="button" class="btn_cancel" data-target="#updfold{{i.id}}" id="btn_cancel">X</button>
                             </div>
                             <form action="{% url 'move' type='folder' pk=i.id %}" method="POST" class="form-container"
                                 enctype="multipart/form-data">
@@ -166,6 +167,7 @@
                 </td>
                 <td>{{i.writer}}</td>
                 <td>{{i.publisher}}</td>
+                <td>{{i.ddc}}</td>
                 <td>{{i.count}}</td>
                 <td>{{i.upload_date}}</td>
                 <td>
@@ -173,18 +175,21 @@
                         <a class="open-filein" data-target="#updfile{{i.id}}"><i
                                 class="fa-solid fa-arrows-up-down-left-right"></i></a>
                         <div class="popform" id="updfile{{i.id}}">
-                            <div class="btn_cancel">
+                            <div class="btn_cancel" id="btn_cancel">
                                 <button type="button" class="btn_cancel" data-target="#updfile{{i.id}}">X</button>
                             </div>
+                            
                             <form action="{% url 'move' type='file' pk=i.id %}" method="POST" class="form-container"
                                 enctype="multipart/form-data">
                                 {% csrf_token %}
 
                                 <input type="hidden" name="newname" id="newname" value="{{i.Title}}">
-                                <label for="newfk">Root Folder:</label>
+                                <label for="newfk">Kelas Buku</label>
                                 <select name="newfk" id="newfk">
                                     {% for j in allfold %}
-                                    {% if i.parent_folder_id != j.id %}
+                                    {% if i.parent_folder_id == j.id %}
+                                    <option value="{{j.id}}"selected>{{j.folder_name}}</option>
+                                    {% else %}
                                     <option value="{{j.id}}">{{j.folder_name}}</option>
                                     {% endif %}
                                     {% endfor %}
@@ -198,23 +203,88 @@
                     </div>
                 </td>
                 <td>
-                    <div class="filechange"> 
-                        
-                        <a class="open-filein" data-target="#editfile{{i.id}}"><i class="fa-solid fa-pen-to-square"></i></a>
+                    <div class="filechange">
+                        <a class="open-filein" data-target="#editfile{{i.id}}"><i
+                                class="fa-solid fa-pen-to-square"></i></a>
+
                         <div class="popform" id="editfile{{i.id}}">
+                            <div id="fileform">
                             <div class="btn_cancel">
-                                <button type="button" class="btn_cancel" data-target="#editfile{{i.id}}">X</button>
+                                <button type="button" class="btn_cancel" data-target="#editfile{{i.id}}" id="btn_cancel">X</button>
                             </div>
-                            <form action="{% url 'fileedit' file_root=root book_id=i.id %}" method="POST" class="form-container"
-                                enctype="multipart/form-data" id="editBook">
+
+                            <h3>Edit Detail Buku</h3>
+
+                            <form action="{% url 'fileedit' file_root=root book_id=i.id %}" method="POST"
+                                class="form-container" enctype="multipart/form-data" id="editBook">
                                 {% csrf_token %}
                                 <br>
-                                {{form.as_p}}
+
+                                <div class="form-group">
+                                    <label for="newtitle">Judul</label>
+                                    <input type="text" value="{{i.Title}}" id="newtitle" name="newtitle">
+
+                                </div>
+                                <br>
+
+                                <div class="form-group">
+                                    <label for="newwriter">Penulis</label>
+                                    <input type="text" id="newwriter" value="{{ i.writer }}" name="newwriter">
+                                    
+                                </div>
+                                <br>
+
+                                <div class="form-group">
+                                    <label for="newpublisher">Penerbit</label>
+                                    <input type="text" id="newpublisher" value="{{ i.publisher }}" name="newpublisher">
+                                </div>
+                                <br>
+
+                                <div class="form-group">
+                                    <label for="newddc">DDC</label>
+                                    <input type="text" id="newddc" value="{{ i.ddc }}" name="newddc">
+                                </div>
+                                <br>
+
+                                <div class="form-group">
+                                    <label for="newcount">Jumlah</label>
+                                    <input type="text" id="newcount" value="{{ i.count }}" name="newcount">
+                                </div>
+                                <br>
+
+                                <div class="form-group">
+                                    <label for="newsyn">Sinopsis</label>
+                                    <input type="text" id="newsyn" value="{{ i.synopsis }}" name="newsyn">
+                                </div>
+                                <br>
+
+                                <div class="form-group">
+                                    <label for="newfk">Kelas Buku</label>
+                                    <select name="newfk" id="newfk" name="newfk">
+                                        {% for j in allfold %}
+                                        {% if i.parent_folder_id == j.id %}
+                                        <option value="{{j.id}}"selected>{{j.folder_name}}</option>
+                                        {% else %}
+                                        <option value="{{j.id}}">{{j.folder_name}}</option>
+                                        {% endif %}
+                                        {% endfor %}
+                                    </select>  
+                                </div>
+                                <br>
+
+                                <div class="form-group">
+                                    <label for="newimg">Gambar</label>
+                                    <input type="file" name="newimg" id="newimg">
+                                    {% if i.img %}
+                                    <p><small>Current: {{ i.img.name|cut:"static/previews/" }}</small></p>
+                                    {% endif %}
+                                </div>
                                 <br><br>
                                 <div style="text-align: center;">
                                     <input type="submit">
                                 </div>
                             </form>
+                            </div>
                         </div>
                     </div>
                 </td>
@@ -232,6 +302,20 @@
     const btns = document.querySelectorAll("[data-target]");
     const cls_btns = document.querySelectorAll(".btn_cancel");
     const overlay = document.getElementById("overlay");
+
+    document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape") {
+        document.querySelectorAll(".btn_cancel button").forEach(btn => {
+        const targetSelector = btn.dataset.target;
+        const target = document.querySelector(targetSelector);
+        
+        // Check if the popup is currently active (visible)
+        if (target && target.classList.contains("active")) {
+            btn.click(); // close this specific popup
+        }
+        });
+    }
+    });
 
     btns.forEach((btn) => {
         btn.addEventListener("click", () => {

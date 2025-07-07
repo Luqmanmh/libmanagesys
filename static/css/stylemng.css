@@ -1,9 +1,9 @@
 tr td:first-child p{
-    display: inline-block;
     width: 20rem;
-    overflow: hidden;
+    /* display: inline-block; */
+    /* overflow: hidden;
     text-overflow: ellipsis;
-    white-space: nowrap;
+    white-space: nowrap; */
     margin-bottom: -.5rem;
 }
 
@@ -50,6 +50,7 @@ th:last-child {
 #fileform {
     width: 35rem;
     max-height: 45rem;
+    scroll-behavior: auto;
 }
 
 #fileform form{
@@ -107,6 +108,8 @@ th:last-child {
     border-radius: 1rem;
     padding: 2rem;
     background-color: white;
+    scroll-behavior: auto;
+    overflow: scroll;
 }
 
 .popform.active {
@@ -251,3 +254,15 @@ i:hover{
 i {
     transition: transform 0.2s;
 }
+
+.form-group p{
+    width: 20rem;
+    display: inline-block; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* ::-webkit-scrollbar {
+  height: 30rem;
+} */

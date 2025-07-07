@@ -15,4 +15,5 @@ class Book(models.Model):
   publisher = models.CharField(max_length=255)
   count = models.CharField(max_length=128)
   synopsis = models.TextField()
+  ddc = models.CharField(max_length=10)
 

@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/styledet.css' %}">
+{% endblock %}
+{% block title %}{{book.Title}}{% endblock title %}
+{% block content %}
+<nav>
+    <div class="logo">
+        <a href="/online/f/1">
+            <img src="{% static 'img/component1.png' %}" , width="200px">
+        </a>
+    </div>
+
+    <div class="search">
+        <form method="GET" action="{% url 'searchon' %}">
+            <input type="text" id="search" name="quest" value="{{query}}" placeholder="Cari di BookSelv">
+            <button class="spy" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </form>
+    </div>
+
+    <div class="nav-right">
+        <a href="{% url 'loginadm' %}" class="log">Manajemen Buku</a>
+
+    </div>
+</nav>
+
+<div class="allcont">
+    <div class="book-container">
+        <div class="imgcont">
+            {% if book.img %}
+            <img class="card-img-top" src="{{book.img.url}}" alt="{{i.title}}">
+            {% else %}
+            <img class="card-img-top" src="{% static 'img/book.png' %}" alt="{{i.title}}">
+            {% endif %}
+        </div>
+        <div class="detcont">
+            <h5><b>Judul</b></h5>
+            <p>{{book.Title}}</p>
+            <h5><b>Penulis</b></h5>
+            <p>{{book.writer}}</p>
+            <h5><b>Penerbit</b></h5>
+            <p>{{book.publisher}}</p>
+            <h5><b>Kode DDC</b></h5>
+            <p>{{book.ddc}}</p>
+            <h5><b>jumlah</b></h5>
+            <p>{{book.count}}</p>
+            <h5><b>Sinopsis</b></h5>
+            <p>{{book.synopsis}}</p>
+        </div>
+
+    </div>
+</div>
+{% endblock content %}

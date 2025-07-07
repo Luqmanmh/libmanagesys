@@ -180,6 +180,7 @@ def fileup(request, file_root):
                 parent_folder=folder,
                 writer=form.cleaned_data['writer'],
                 publisher=form.cleaned_data['publisher'],
+                ddc = form.cleaned_data['ddc'],
                 count=form.cleaned_data['count'],
                 synopsis=form.cleaned_data['synopsis'],
             )
@@ -194,31 +195,18 @@ def fileup(request, file_root):
 @login_required(login_url='loginadm')
 def fileedit(request, file_root, book_id):
     book = Book.objects.get(id=book_id)
-    if request.method == "POST":
-        form = FileUploadForm(request.POST, request.FILES)
-        if form.is_valid():
-            folder = Folder.objects.get(id=form.cleaned_data['folder'])
-            book.Title=form.cleaned_data['title']
-            if form.cleaned_data['file'] is not None:
-                book.img=form.cleaned_data['file']
-            book.parent_folder=folder
-            book.writer=form.cleaned_data['writer']
-            book.publisher=form.cleaned_data['publisher']
-            book.count=form.cleaned_data['count']
-            book.synopsis=form.cleaned_data['synopsis']
-            book.save()
+    book.Title=request.POST.get('newtitle')
+    book.writer=request.POST.get('newwriter')
+    book.publisher=request.POST.get('newpublisher')
+    book.ddc=request.POST.get('newddc')
+    book.count=request.POST.get('newcount')
+    book.synopsis=request.POST.get('newsyn')
+    book.parent_folder=Folder.objects.get(pk = request.POST.get('newfk'))
+    if request.FILES.get('newimg') is not None:
+        book.img=request.FILES.get('newimg')
+    book.save()
 
-            return redirect(f"/manage/f/{file_root}")
-    else:
-        form = FileUploadForm(initial={
-            'title': book.Title,
-            'writer': book.writer,
-            'publisher': book.publisher,
-            'count': book.count,
-            'synopsis': book.synopsis,
-            'folder': book.parent_folder.id,
-        })
-    # return render(request, 'partials/edit_book.html', {'formd': form})
+    return redirect(f"/manage/f/{request.POST.get('newfk')}")
 
 
 @login_required(login_url='loginadm')
@@ -353,3 +341,11 @@ def view_pdf(request, file_id):
         return FileResponse(open(file_path, 'rb'), content_type='application/pdf')
     except FileNotFoundError:
         raise Http404("File not found")
+    
+def book_detail(request, id):
+    book = Book.objects.get(pk = id)
+    
+    cont= {
+        "book":book,
+    }
+    return render(request, 'bookdet.html', cont)

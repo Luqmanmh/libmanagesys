@@ -42,18 +42,15 @@
 
         {% for i in infile %}
         <div class="cardcover">
-            <a href="{% url 'view_pdf' file_id=i.id %}" target="_new">
+            <a href="{% url 'book_detail' id=i.id %}">
                 <div class="card" style="width: 11rem;">
                     {% if i.img %}
-                    <img class="card-img-top" src="{{i.img.url}}" alt="{{i.filename}}">
+                    <img class="card-img-top" src="{{i.img.url}}" alt="{{i.title}}">
                     {% else %}
-                    <img class="card-img-top" src="{% static 'img/book.png' %}" alt="{{i.filename}}">
+                    <img class="card-img-top" src="{% static 'img/book.png' %}" alt="{{i.title}}">
                     {% endif %}
                     <div class="card-body">
-                        <p class="card-title">{{i.filename}}</p>
-                        <div class="downbtn">
-                            <a href="{% url 'download' pk=i.id %}"><i class="fa-solid fa-file-arrow-down"></i></a>
-                        </div>
+                        <p class="card-title">{{i.Title}}</p>
 
                     </div>
                 </div>
