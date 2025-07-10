@@ -138,15 +138,6 @@
                                 {% csrf_token %}
                                 <label for="newname">Name</label>
                                 <input type="text" name="newname" id="newname" value="{{i.folder_name}}"> <br> <br>
-                                <label for="newfk">Root Folder</label>
-                                <select name="newfk" id="newfk">
-                                    {% for j in allfold %}
-                                    {% if j.id != i.id %}
-                                    <option value="{{j.id}}" {% if j.id == i.id %} selected {% endif %}>{{j.folder_name}}
-                                    </option>
-                                    {% endif %}
-                                    {% endfor %}
-                                </select> <br> <br>
                                 <div style="text-align: center;">
                                     <input type="submit">
                                 </div>

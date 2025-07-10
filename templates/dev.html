@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/styledev.css' %}">
+{% endblock %}
+{% block title %}Developer{% endblock title %}
+{% block content %}
+
+<nav>
+    <div class="logo">
+        <a href="/online/f/1">
+            <img src="{% static 'img/component1.png' %}" , width="200px">
+        </a>
+    </div>
+
+    <div class="search">
+    </div>
+
+    <div class="nav-right">
+    </div>
+</nav>
+<div class="dev-main">
+    <h2>Originally developed for a college subject by</h2>
+    <div class="dev-container">
+        <div class="dev-card">
+            <img src="https://media.licdn.com/dms/image/v2/D4D03AQEgJguHmwrHcw/profile-displayphoto-shrink_400_400/B4DZVKN3tZHIAg-/0/1740706905555?e=1757548800&v=beta&t=F3kydNpyye-09abBiOhQZ2fRl2yAFBFIUMqWijJSMEk" alt=" Luqman Mohammad Hakim">
+            <p>Luqman Mohammad Hakim</p>
+            <p>Full-Stack</p>
+            <a href="https://www.linkedin.com/in/luqman-m-hakim-0250741a5/"><i class="fa-brands fa-linkedin"></i> Linkedin</a>
+        </div>
+        <div class="dev-card">
+            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Muhammad Agal Lulanika">
+            <p>Muhammad Agal Lulanika</p>
+            <p>UI/UX</p>
+            <a href="https://www.linkedin.com/in/muhammad-agal-lulanika-709490264/"><i class="fa-brands fa-linkedin"></i> Linkedin</a>
+        </div>
+        <div class="dev-card">
+            <img src="https://media.licdn.com/dms/image/v2/D5603AQGhd5PFYo18YA/profile-displayphoto-shrink_400_400/B56ZWFWFJYHsAk-/0/1741698913351?e=1757548800&v=beta&t=NqMwXPWPrgffbe02gubGkDT0JqftUSg6G75mdwpBVw4" alt="Fikri Aulia Rahman">
+            <p>Fikri Aulia Rahman</p>
+            <p>Front-End</p>
+            <a href="https://www.linkedin.com/in/fikri-aulia-rahman-572556248/"><i class="fa-brands fa-linkedin"></i> Linkedin</a>
+        </div>
+    </div>
+    <h6>Modified and altered to fit the use of KKN-T PATIKAB06</h6>
+</div>
+{% endblock content %}

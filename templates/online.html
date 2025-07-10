@@ -6,6 +6,7 @@
 {% block title %}Book Collection{% endblock title %}
 {% block content %}
 <nav>
+
     <div class="logo">
         <a href="/online/f/1">
             <img src="{% static 'img/component1.png' %}" , width="200px">
@@ -25,7 +26,60 @@
     </div>
 </nav>
 <div class="alls">
+    <div class="hal">
+        <p><small>halaman</small></p>
+    </div>
+    <div class="pagination">
+        {% if root == 1 %}
+        {% if infolder.has_previous %}
+        <a href="?folder_page=1" class="pagepos"><i class="fa-solid fa-angles-left"></i></a>
+        <a href="?folder_page={{ infolder.previous_page_number }}" class="pagepos"><i
+                class="fa-solid fa-chevron-left"></i></a>
+        {% else%}
+        <p class="pageneg"><i class="fa-solid fa-angles-left"></i></p>
+        <p class="pageneg"><i class="fa-solid fa-chevron-left"></i></p>
+        {% endif %}
+
+        <div>
+            <span class="pagenum">{{ infolder.number }} dari {{ infolder.paginator.num_pages }} </span>
+        </div>
+
+        {% if infolder.has_next %}
+        <a href="?folder_page={{ infolder.next_page_number }}" class="pagepos"><i
+                class="fa-solid fa-chevron-right"></i></a>
+        <a href="?folder_page={{ infolder.paginator.num_pages }}" class="pagepos"><i
+                class="fa-solid fa-angles-right"></i></a>
+        {% else %}
+        <p class="pageneg"><i class="fa-solid fa-chevron-right"></i></p>
+        <p class="pageneg"><i class="fa-solid fa-angles-right"></i></p>
+        {% endif %}
+
+        {% else %}
+
+        {% if infile.has_previous %}
+        <a href="?file_page=1" class="pagepos"><i class="fa-solid fa-angles-left"></i></a>
+        <a href="?file_page={{ infile.previous_page_number }}" class="pagepos"><i class="fa-solid fa-chevron-left"></i></a>
+        {% else %}
+        <p class="pageneg"><i class="fa-solid fa-angles-left"></i></p>
+        <p class="pageneg"><i class="fa-solid fa-chevron-left"></i></p>
+        {% endif %}
+
+        <div>
+            <span class="pagenum">{{ infile.number }} dari {{ infile.paginator.num_pages }}</span>
+        </div>
+
+        {% if infile.has_next %}
+        <a href="?file_page={{ infile.next_page_number }}" class="pagepos"><i class="fa-solid fa-chevron-right"></i></a>
+        <a href="?file_page={{ infile.paginator.num_pages }}" class="pagepos"><i class="fa-solid fa-angles-right"></i></a>
+        {% else %}
+        <p class="pageneg"><i class="fa-solid fa-chevron-right"></i></p>
+        <p class="pageneg"><i class="fa-solid fa-angles-right"></i></p>
+        {% endif %}
+        {% endif %}
+    </div>
+
     <div class="tablecar">
+
         {% for i in infolder %}
         <div class="cardcover">
             <a href="/online/f/{{i.id}}">

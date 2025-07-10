@@ -1,0 +1,72 @@
+@import url("https://fonts.googleapis.com/css2?family-Poppins:wght@300;400;500;600;700;800;900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body{
+    min-height: 100vh;
+    background-image: url(/static/img/bg2.png);
+    background-size: cover;
+    background-position: center;
+}
+
+nav{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 25px;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.nav-right{
+    display: flex;
+    justify-content: space-between;
+    margin-right: .6rem;
+}
+
+a{
+    text-decoration: none;
+    font-family: "Poppins", sans-serif;
+    font-weight: 750;
+    color: black;
+}
+
+i:hover{
+    transform: scale(1.1);
+}
+
+i {
+    transition: transform 0.2s;
+}
+
+.dev-main h2{
+    margin: 5rem auto 0 auto;
+    width: fit-content;
+}
+.dev-main h6{
+    margin: 5rem auto 0 auto;
+    width: fit-content;
+}
+
+.dev-card img {
+    border-radius: 13rem;
+    width: 10rem;
+    border: solid black .05rem;
+}
+
+.dev-container {
+    display: flex;
+    width: fit-content;
+    margin: 5rem auto;
+    justify-content: space-evenly;
+    gap: 5rem;
+    text-align: center;
+
+}

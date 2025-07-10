@@ -11,16 +11,25 @@ import os
 import pdf2image
 from django.shortcuts import render, get_object_or_404
 from django.http import FileResponse, Http404
+from django.core.paginator import Paginator
 
 
 def index(request, file_root):
-    infolder = Folder.objects.filter(parent_folder_id = file_root).order_by('folder_name')
-    infile = Book.objects.filter(parent_folder_id = file_root).order_by('Title')
+    infolder_all = Folder.objects.filter(parent_folder_id = file_root).order_by('folder_name')
+    infile_all = Book.objects.filter(parent_folder_id = file_root).order_by('Title')
 
     if Folder.objects.get(pk = file_root).parent_folder is not None:
         par = Folder.objects.get(pk = file_root).parent_folder.id
     else:
         par = 1;
+        
+    pagdfold = Paginator(infolder_all, 50)
+    foldpage = request.GET.get("folder_page")
+    infolder = pagdfold.get_page(foldpage)
+    
+    pagdfile = Paginator(infile_all, 50)
+    filepage = request.GET.get("file_page")
+    infile = pagdfile.get_page(filepage)
     
     cont = {
         "infolder" : infolder, 
@@ -45,7 +54,7 @@ def check_admin(user):
 def manage(request, file_root):
     infolder = Folder.objects.filter(parent_folder_id = file_root)
     infile = Book.objects.filter(parent_folder_id = file_root)
-    allfold = Folder.objects.all()
+    allfold = Folder.objects.exclude(pk = 1)
     
     if Folder.objects.get(pk = file_root).parent_folder is not None:
         par = Folder.objects.get(pk = file_root).parent_folder.id
@@ -165,6 +174,9 @@ def register(request):
                 return redirect('register')  
     else:
         return render(request, 'register.html')
+    
+def dev_page(request):
+    return render(request, "dev.html")
 
 
 
@@ -270,7 +282,7 @@ def move(request, type, pk):
     elif type == "folder":
         folder = Folder.objects.get(pk = pk)
         
-        folder.parent_folder_id = newfk
+        # folder.parent_folder_id = newfk
         folder.folder_name = newname
         folder.save()
         
