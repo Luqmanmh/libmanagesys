@@ -193,8 +193,3 @@ cython_debug/
 
 #ignore data folder
 data/
-
-media/satatic/previews/
-staticfiles
-static/css
-!static/css/stylemng.css
