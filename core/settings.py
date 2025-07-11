@@ -117,11 +117,15 @@ import cloudinary.uploader
 import cloudinary.api
 
 cloudinary.config(
-
+    cloud_name='dklfylltk',
+    api_key='382761543668966',
+    api_secret='Jz5pL_HhoMVfxI_4gTJ2jrPfBq0'
 )
 
 CLOUDINARY_STORAGE = {
-
+    'CLOUD_NAME': 'dklfylltk',
+    'API_KEY': '382761543668966',
+    'API_SECRET': 'Jz5pL_HhoMVfxI_4gTJ2jrPfBq0'
 }
 
 # Media files (uploads) - use Cloudinary
