@@ -1084,13 +1084,13 @@
     }
   }
   @media (width >= 48rem) {
-    .md\:w-\[80rem\] {
-      width: 80rem;
+    .md\:w-fit {
+      width: fit-content;
     }
   }
   @media (width >= 48rem) {
-    .md\:w-fit {
-      width: fit-content;
+    .md\:w-full {
+      width: 100%;
     }
   }
   @media (width >= 48rem) {
