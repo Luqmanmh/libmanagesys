@@ -1,46 +1,57 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block css %}
-<link rel="stylesheet" href="{% static 'css/styledev.css' %}">
 {% endblock %}
 {% block title %}Developer{% endblock title %}
+{% block body_class %}style="background-image:url(/static/img/bg2.png);"{% endblock %}
 {% block content %}
 
-<nav>
+<nav class="flex flex-row items-center justify-between pt-6 px-6">
     <div class="logo">
         <a href="/online/f/1">
-            <img src="{% static 'img/component1.png' %}" , width="200px">
+            <img src="{% static 'img/component1.png' %}" width="200" alt="logo">
         </a>
     </div>
 
-    <div class="search">
-    </div>
-
-    <div class="nav-right">
-    </div>
+    <div class="search"></div>
+    <div class="nav-right flex justify-between mr-2"></div>
 </nav>
-<div class="dev-main">
-    <h2>Originally developed for a college subject by</h2>
-    <div class="dev-container">
-        <div class="dev-card">
-            <img src="https://media.licdn.com/dms/image/v2/D4D03AQEgJguHmwrHcw/profile-displayphoto-shrink_400_400/B4DZVKN3tZHIAg-/0/1740706905555?e=1757548800&v=beta&t=F3kydNpyye-09abBiOhQZ2fRl2yAFBFIUMqWijJSMEk" alt=" Luqman Mohammad Hakim">
-            <p>Luqman Mohammad Hakim</p>
+
+<div class="dev-main text-center text-black">
+    <h2 class="mt-20 mx-auto w-fit text-xl font-semibold">Originally developed for a college subject by</h2>
+
+    <div class="dev-container md:flex justify-evenly flex-wrap gap-20 text-center mt-20 mx-auto md:w-fit">
+        <div class="dev-card flex flex-col items-center">
+            <img src="https://media.licdn.com/dms/image/v2/D4D03AQEgJguHmwrHcw/profile-displayphoto-shrink_400_400/B4DZVKN3tZHIAg-/0/1740706905555?e=1757548800&v=beta&t=F3kydNpyye-09abBiOhQZ2fRl2yAFBFIUMqWijJSMEk"
+                alt="Luqman Mohammad Hakim" class="rounded-full w-40 border-[.025rem] border-black">
+            <p class="font-semibold">Luqman Mohammad Hakim</p>
             <p>Full-Stack</p>
-            <a href="https://www.linkedin.com/in/luqman-m-hakim-0250741a5/"><i class="fa-brands fa-linkedin"></i> Linkedin</a>
+            <a href="https://www.linkedin.com/in/luqman-m-hakim-0250741a5/" class="text-black [text-decoration:none]">
+                <p class="font-normal text-black"><i class="fa-brands fa-linkedin mr-1"></i>Linkedin</p>
+            </a>
         </div>
-        <div class="dev-card">
-            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Muhammad Agal Lulanika">
-            <p>Muhammad Agal Lulanika</p>
+
+        <div class="dev-card flex flex-col items-center">
+            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                alt="Muhammad Agal Lulanika" class="rounded-full w-40 border-[.025rem] border-black">
+            <p class="font-semibold">Muhammad Agal Lulanika</p>
             <p>UI/UX</p>
-            <a href="https://www.linkedin.com/in/muhammad-agal-lulanika-709490264/"><i class="fa-brands fa-linkedin"></i> Linkedin</a>
+            <a href="https://www.linkedin.com/in/muhammad-agal-lulanika-709490264/" class="text-black">
+                <p class="font-normal text-black"><i class="fa-brands fa-linkedin mr-1"></i>Linkedin</p>
+            </a>
         </div>
-        <div class="dev-card">
-            <img src="https://media.licdn.com/dms/image/v2/D5603AQGhd5PFYo18YA/profile-displayphoto-shrink_400_400/B56ZWFWFJYHsAk-/0/1741698913351?e=1757548800&v=beta&t=NqMwXPWPrgffbe02gubGkDT0JqftUSg6G75mdwpBVw4" alt="Fikri Aulia Rahman">
-            <p>Fikri Aulia Rahman</p>
+
+        <div class="dev-card flex flex-col items-center">
+            <img src="https://media.licdn.com/dms/image/v2/D5603AQGhd5PFYo18YA/profile-displayphoto-shrink_400_400/B56ZWFWFJYHsAk-/0/1741698913351?e=1757548800&v=beta&t=NqMwXPWPrgffbe02gubGkDT0JqftUSg6G75mdwpBVw4"
+                alt="Fikri Aulia Rahman" class="rounded-full w-40 border-[.025rem] border-black">
+            <p class="font-semibold">Fikri Aulia Rahman</p>
             <p>Front-End</p>
-            <a href="https://www.linkedin.com/in/fikri-aulia-rahman-572556248/"><i class="fa-brands fa-linkedin"></i> Linkedin</a>
+            <a href="https://www.linkedin.com/in/fikri-aulia-rahman-572556248/" class="text-black">
+                <p class="font-normal text-black"><i class="fa-brands fa-linkedin mr-1"></i>Linkedin</p>
+            </a>
         </div>
     </div>
-    <h6>Modified and altered to fit the use of KKN-T PATIKAB06</h6>
+    <br>
+    <h6 class="mt-[5rem] mx-auto w-fit text-sm font-medium">Modified and altered to fit the use of KKN-T PATIKAB06</h6>
 </div>
 {% endblock content %}

@@ -8,7 +8,7 @@ urlpatterns = [
     path('', views.blink, name='blink'),
     path('online/f/<int:file_root>', views.index, name='online'),
     # path('login/', views.loginusr, name='loginusr'),
-    path('admin_login/', views.loginadm, name='loginadm'),
+    path('login/', views.loginadm, name='loginadm'),
     # path('register/', views.register, name='register'),
     path('logoutusr/', views.logoutusr, name='logoutusr'),
     # path('userpanel/', views.userpanel, name='userpanel'),
@@ -27,7 +27,7 @@ urlpatterns = [
     
 ]
 
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-else:
-    urlpatterns += staticfiles_urlpatterns()
+# if settings.DEBUG:
+#     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+# else:
+#     urlpatterns += staticfiles_urlpatterns()

@@ -48,9 +48,8 @@ def blink(request):
 def check_admin(user):
    return user.is_superuser
 
-
-@user_passes_test(check_admin)
 @login_required(login_url='loginadm')
+@user_passes_test(check_admin)
 def manage(request, file_root):
     infolder = Folder.objects.filter(parent_folder_id = file_root)
     infile = Book.objects.filter(parent_folder_id = file_root)
@@ -112,18 +111,18 @@ def userpanel(request):
         return render(request, 'userpanel.html')
 
 
-def loginusr(request):
-    if request.method == "POST":
-        username = request.POST['username']
-        password = request.POST['password']
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-            login(request, user)
-            return redirect('/online/f/1')
-        else:
-            messages.error(request, "There was an error logging in. Please try again.")
-            return redirect('loginusr')
-    return render(request, 'login.html')
+# def loginusr(request):
+#     if request.method == "POST":
+#         username = request.POST['username']
+#         password = request.POST['password']
+#         user = authenticate(request, username=username, password=password)
+#         if user is not None:
+#             login(request, user)
+#             return redirect('/online/f/1')
+#         else:
+#             messages.error(request, "There was an error logging in. Please try again.")
+#             return redirect('loginusr')
+#     return render(request, 'login.html')
 
 
 
@@ -215,6 +214,7 @@ def fileedit(request, file_root, book_id):
     book.synopsis=request.POST.get('newsyn')
     book.parent_folder=Folder.objects.get(pk = request.POST.get('newfk'))
     if request.FILES.get('newimg') is not None:
+        book.img.delete()
         book.img=request.FILES.get('newimg')
     book.save()
 
@@ -317,7 +317,7 @@ def search_file(request):
     resi = []
     reso = []
     
-    resi = Book.objects.filter(filename__contains = quest)
+    resi = Book.objects.filter(Title__contains = quest)
     reso = Folder.objects.filter(folder_name__contains = quest)
     
     cont = {
@@ -333,7 +333,7 @@ def search_fileu(request):
     resi = []
     reso = []
     
-    resi = Book.objects.filter(filename__contains = quest)
+    resi = Book.objects.filter(Title__contains = quest)
     reso = Folder.objects.filter(folder_name__contains = quest)
     
     cont = {

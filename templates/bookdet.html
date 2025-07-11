@@ -1,54 +1,65 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block css %}
-<link rel="stylesheet" href="{% static 'css/styledet.css' %}">
 {% endblock %}
-{% block title %}{{book.Title}}{% endblock title %}
+{% block title %}{{ book.Title }}{% endblock title %}
+{% block body_class %}style="background-image:url(/static/img/bg2.png);"{% endblock %}
 {% block content %}
-<nav>
-    <div class="logo">
-        <a href="/online/f/1">
-            <img src="{% static 'img/component1.png' %}" , width="200px">
-        </a>
-    </div>
+<nav class="flex items-center justify-between pt-6 px-6">
+  <div class="logo">
+    <a href="/online/f/1">
+      <img src="{% static 'img/component1.png' %}" width="200px" alt="logo" class="hidden md:block">
+      <img src="{% static 'img/bs1.png' %}" width="40rem" alt="logo" class="block md:hidden">
+    </a>
+  </div>
 
-    <div class="search">
-        <form method="GET" action="{% url 'searchon' %}">
-            <input type="text" id="search" name="quest" value="{{query}}" placeholder="Cari di BookSelv">
-            <button class="spy" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-        </form>
-    </div>
+  <div class="search">
+    <form method="GET" action="{% url 'searchon' %}" class="relative">
+      <input
+        type="text"
+        id="search"
+        name="quest"
+        value="{{ query }}"
+        placeholder="Cari di BookSelv"
+        class="md:w-[20rem] w-[15rem] h-10 pl-5 pr-10 text-sm border-2 border-gray-600 rounded-lg"
+      >
+      <button class="spy absolute right-2 top-1/2 -translate-y-1/2 text-gray-500" type="submit">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
+    </form>
+  </div>
 
-    <div class="nav-right">
-        <a href="{% url 'loginadm' %}" class="log">Manajemen Buku</a>
-
-    </div>
+  <div class="nav-right md:flex space-x-2 mr-2 hidden ">
+    <a href="{% url 'loginadm' %}" class="log border-2 border-[#761EAE] bg-white text-black rounded-lg h-[35px] min-w-[100px] px-4 flex items-center justify-center font-semibold">
+      Manajemen Buku
+    </a>
+  </div>
 </nav>
 
-<div class="allcont">
-    <div class="book-container">
-        <div class="imgcont">
-            {% if book.img %}
-            <img class="card-img-top" src="{{book.img.url}}" alt="{{i.title}}">
-            {% else %}
-            <img class="card-img-top" src="{% static 'img/book.png' %}" alt="{{i.title}}">
-            {% endif %}
-        </div>
-        <div class="detcont">
-            <h5><b>Judul</b></h5>
-            <p>{{book.Title}}</p>
-            <h5><b>Penulis</b></h5>
-            <p>{{book.writer}}</p>
-            <h5><b>Penerbit</b></h5>
-            <p>{{book.publisher}}</p>
-            <h5><b>Kode DDC</b></h5>
-            <p>{{book.ddc}}</p>
-            <h5><b>jumlah</b></h5>
-            <p>{{book.count}}</p>
-            <h5><b>Sinopsis</b></h5>
-            <p>{{book.synopsis}}</p>
-        </div>
-
+<!-- <img src="https://res.cloudinary.com/dklfylltk/media/static/previews/ruinationcvr" alt="Book Cover"> -->
+<div class="allcont flex justify-center my-28">
+  <div class="book-container bg-white w-[50rem] md:h-[30rem] min-w-[20rem] min-h-[30rem] rounded-lg border-2 border-gray-300 overflow-hidden md:flex">
+    <div class="imgcont md:w-[25rem] w-[15rem] mx-auto md:mx-0 gap-8 md:gap-0">
+      {% if book.img %}
+      <img class="card-imgtop md:w-[25rem] w-[15rem] md:rounded-l-lg object-cover mx-auto" src="{{ book.img.url }}" alt="{{ book.Title }}">
+      {% else %}
+      <img class="card-imgtop md:w-[25rem] w-[10rem] md:rounded-l-lg object-cover" src="{% static 'img/book.png' %}" alt="default book cover">
+      {% endif %}
     </div>
+    <div class="detcont px-8 py-12 md:w-[25rem] h-[30rem] overflow-y-scroll space-y-3">
+      <h5 class="font-bold">Judul</h5>
+      <p>{{ book.Title }}</p>
+      <h5 class="font-bold">Penulis</h5>
+      <p>{{ book.writer }}</p>
+      <h5 class="font-bold">Penerbit</h5>
+      <p>{{ book.publisher }}</p>
+      <h5 class="font-bold">Kode DDC</h5>
+      <p>{{ book.ddc }}</p>
+      <h5 class="font-bold">Jumlah</h5>
+      <p>{{ book.count }}</p>
+      <h5 class="font-bold">Sinopsis</h5>
+      <p>{{ book.synopsis }}</p>
+    </div>
+  </div>
 </div>
 {% endblock content %}

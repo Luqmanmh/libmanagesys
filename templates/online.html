@@ -1,47 +1,59 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block css %}
-<link rel="stylesheet" href="{% static 'css/styleon.css' %}">
 {% endblock %}
 {% block title %}Book Collection{% endblock title %}
+{% block body_class %}style="background-image:url(/static/img/bg2.png);"{% endblock %}
 {% block content %}
-<nav>
+<nav class="flex items-center justify-between pt-6 px-6">
+  <div class="logo">
+    <a href="/online/f/1">
+      <img src="{% static 'img/component1.png' %}" width="200px" alt="logo" class="hidden md:block">
+      <img src="{% static 'img/bs1.png' %}" width="40rem" alt="logo" class="block md:hidden">
+    </a>
+  </div>
 
-    <div class="logo">
-        <a href="/online/f/1">
-            <img src="{% static 'img/component1.png' %}" , width="200px">
-        </a>
-    </div>
+  <div class="search">
+    <form method="GET" action="{% url 'searchon' %}" class="relative">
+      <input
+        type="text"
+        id="search"
+        name="quest"
+        value="{{ query }}"
+        placeholder="Cari di BookSelv"
+        class="md:w-[20rem] w-[15rem] h-10 pl-5 pr-10 text-sm border-2 border-gray-600 rounded-lg"
+      >
+      <button class="spy absolute right-2 top-1/2 -translate-y-1/2 text-gray-500" type="submit">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
+    </form>
+  </div>
 
-    <div class="search">
-        <form method="GET" action="{% url 'searchon' %}">
-            <input type="text" id="search" name="quest" value="{{query}}" placeholder="Cari di BookSelv">
-            <button class="spy" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-        </form>
-    </div>
-
-    <div class="nav-right">
-        <a href="{% url 'loginadm' %}" class="log">Manajemen Buku</a>
-
-    </div>
+  <div class="nav-right md:flex space-x-2 mr-2 hidden ">
+    <a href="{% url 'loginadm' %}" class="log border-2 border-[#761EAE] bg-white text-black rounded-lg h-[35px] min-w-[100px] px-4 flex items-center justify-center font-semibold">
+      Manajemen Buku
+    </a>
+  </div>
 </nav>
+
 <div class="alls">
-    <div class="hal">
+    <div class="hal mt-16 -mb-4 mx-auto text-center">
         <p><small>halaman</small></p>
     </div>
-    <div class="pagination">
+
+    <div class="pagination flex justify-center items-center gap-4 mb-[-4rem]">
         {% if root == 1 %}
         {% if infolder.has_previous %}
         <a href="?folder_page=1" class="pagepos"><i class="fa-solid fa-angles-left"></i></a>
         <a href="?folder_page={{ infolder.previous_page_number }}" class="pagepos"><i
                 class="fa-solid fa-chevron-left"></i></a>
-        {% else%}
-        <p class="pageneg"><i class="fa-solid fa-angles-left"></i></p>
-        <p class="pageneg"><i class="fa-solid fa-chevron-left"></i></p>
+        {% else %}
+        <p class="pageneg"><i class="fa-solid fa-angles-left text-gray-400"></i></p>
+        <p class="pageneg"><i class="fa-solid fa-chevron-left text-gray-400"></i></p>
         {% endif %}
 
         <div>
-            <span class="pagenum">{{ infolder.number }} dari {{ infolder.paginator.num_pages }} </span>
+            <p class="pagenum block">{{ infolder.number }} dari {{ infolder.paginator.num_pages }}</p>
         </div>
 
         {% if infolder.has_next %}
@@ -50,44 +62,46 @@
         <a href="?folder_page={{ infolder.paginator.num_pages }}" class="pagepos"><i
                 class="fa-solid fa-angles-right"></i></a>
         {% else %}
-        <p class="pageneg"><i class="fa-solid fa-chevron-right"></i></p>
-        <p class="pageneg"><i class="fa-solid fa-angles-right"></i></p>
+        <p class="pageneg"><i class="fa-solid fa-chevron-right text-gray-400"></i></p>
+        <p class="pageneg"><i class="fa-solid fa-angles-right text-gray-400"></i></p>
         {% endif %}
 
         {% else %}
 
         {% if infile.has_previous %}
         <a href="?file_page=1" class="pagepos"><i class="fa-solid fa-angles-left"></i></a>
-        <a href="?file_page={{ infile.previous_page_number }}" class="pagepos"><i class="fa-solid fa-chevron-left"></i></a>
+        <a href="?file_page={{ infile.previous_page_number }}" class="pagepos"><i
+                class="fa-solid fa-chevron-left"></i></a>
         {% else %}
-        <p class="pageneg"><i class="fa-solid fa-angles-left"></i></p>
-        <p class="pageneg"><i class="fa-solid fa-chevron-left"></i></p>
+        <p class="pageneg"><i class="fa-solid fa-angles-left text-gray-400"></i></p>
+        <p class="pageneg"><i class="fa-solid fa-chevron-left text-gray-400"></i></p>
         {% endif %}
 
         <div>
-            <span class="pagenum">{{ infile.number }} dari {{ infile.paginator.num_pages }}</span>
+            <p class="pagenum block">{{ infile.number }} dari {{ infile.paginator.num_pages }}</p>
         </div>
 
         {% if infile.has_next %}
         <a href="?file_page={{ infile.next_page_number }}" class="pagepos"><i class="fa-solid fa-chevron-right"></i></a>
-        <a href="?file_page={{ infile.paginator.num_pages }}" class="pagepos"><i class="fa-solid fa-angles-right"></i></a>
+        <a href="?file_page={{ infile.paginator.num_pages }}" class="pagepos"><i
+                class="fa-solid fa-angles-right"></i></a>
         {% else %}
-        <p class="pageneg"><i class="fa-solid fa-chevron-right"></i></p>
-        <p class="pageneg"><i class="fa-solid fa-angles-right"></i></p>
+        <p class="pageneg"><i class="fa-solid fa-chevron-right text-gray-400"></i></p>
+        <p class="pageneg"><i class="fa-solid fa-angles-right text-gray-400"></i></p>
         {% endif %}
         {% endif %}
     </div>
 
-    <div class="tablecar">
-
+    <div class="tablecar flex flex-wrap md:justify-start justify-evenly w-4/5 mx-auto my-20">
         {% for i in infolder %}
-        <div class="cardcover">
-            <a href="/online/f/{{i.id}}">
-                <div class="card" style="width: 11rem;">
-                    <img class="card-img-top" src="{% static 'img/shelf.png' %}" alt="Card image cap">
-                    <div class="card-body">
-                        <p class="card-title">{{i.folder_name}}</p>
-                        <br> <br>
+        <div class="cardcover md:mx-4 mx-[.25rem] mb-8">
+            <a href="/online/f/{{i.id}}" class="text-black">
+                <div class="card md:w-[11rem] w-[9rem]">
+                    <img class="card-img-top w-[10.9rem] h-[11rem] object-cover" src="{% static 'img/shelf.png' %}"
+                        alt="Card image cap">
+                    <div class="card-body mt-2">
+                        <p class="card-title w-[9rem] truncate">{{i.folder_name}}</p>
+                        <br><br>
                     </div>
                 </div>
             </a>
@@ -95,17 +109,17 @@
         {% endfor %}
 
         {% for i in infile %}
-        <div class="cardcover">
-            <a href="{% url 'book_detail' id=i.id %}">
-                <div class="card" style="width: 11rem;">
+        <div class="cardcover md:mx-4 mx-[.25rem] mb-8">
+            <a href="{% url 'book_detail' id=i.id %}" class="text-black">
+                <div class="card md:w-[11rem] w-[9rem]">
                     {% if i.img %}
-                    <img class="card-img-top" src="{{i.img.url}}" alt="{{i.title}}">
+                    <img class="card-img-top w-[10.9rem] h-[11rem] object-cover" src="{{i.img.url}}" alt="{{i.title}}">
                     {% else %}
-                    <img class="card-img-top" src="{% static 'img/book.png' %}" alt="{{i.title}}">
+                    <img class="card-img-top w-[10.9rem] h-[11rem] object-cover" src="{% static 'img/book.png' %}"
+                        alt="{{i.title}}">
                     {% endif %}
-                    <div class="card-body">
-                        <p class="card-title">{{i.Title}}</p>
-
+                    <div class="card-body mt-2">
+                        <p class="card-title w-[9rem] truncate">{{i.Title}}</p>
                     </div>
                 </div>
             </a>
@@ -113,5 +127,5 @@
         {% endfor %}
     </div>
 </div>
-</div>
+
 {% endblock content %}

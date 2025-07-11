@@ -195,3 +195,6 @@ cython_debug/
 data/
 
 media/satatic/previews/
+staticfiles
+static/css
+!static/css/stylemng.css

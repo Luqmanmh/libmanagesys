@@ -17,19 +17,28 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
+TAILWIND_APP_NAME = 'theme'
+
+INTERNAL_IPS = [
+    '127.0.0.1',
+]
+
+NPM_BIN_PATH = 'npm.cmd'
 
 # Application definition
 
 INSTALLED_APPS = [
-    'Bookselv',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'cloudinary',
     'cloudinary_storage',
+    'cloudinary',
+    'tailwind',
+    'theme',
+    'Bookselv',  # Move your app to the end
 ]
 
 MIDDLEWARE = [
@@ -102,15 +111,24 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+# Cloudinary Configuration
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+
+cloudinary.config(
+
+)
 
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'name',
-    'API_KEY': 'key',
-    'API_SECRET': 'pass'
+
 }
 
-MEDIA_URL = '/media/'
+# Media files (uploads) - use Cloudinary
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+# Remove or comment out these lines since you're using Cloudinary:
+# MEDIA_URL = '/media/'
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Default primary key field type

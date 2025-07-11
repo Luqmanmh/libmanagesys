@@ -1,29 +1,37 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block css %}
-<link rel="stylesheet" href="{% static 'css/adm-login.css' %}">
 {% endblock %}
 {% block title %}Admin Login Page{% endblock title %}
+{% block body_class %}style="background-image:url(/static/img/bg1.png);"{% endblock %}
 {% block content %}
-<nav>
-    <a href="" class="logo">
-        <img src="{% static 'img/component2.png' %}" width="70%">
-    </a>
+
+<nav class="nav flex flex-row items-center">
+  <a href="" class="logo flex items-center mt-3 ml-4 text-white no-underline">
+    <img src="{% static 'img/component2.png' %}" class="w-[70%]" />
+  </a>
 </nav>
-<div class="container">
-    <h3 class="title">Login as Admin</h3>
-    <form action="{% url 'loginadm' %}" method="POST">
-        {% csrf_token %}
-        <label for="username">Username</label>
-        <input type="text" id="username" name="username">
-        <br> <br>
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password">
-        <br> <br>
-        <div class="submit">
-            <input id="login" type="submit" value="Login">
-            <a href="{% url 'online' file_root=1 %}">return</a>
-        </div>
-    </form>
+
+<div class="container mt-[10vh] text-white">
+  <h3 class="title text-center font-bold text-[30px] font-russo mb-[-20px]">Login as Admin</h3>
+  <form action="{% url 'loginadm' %}" method="POST" class="flex flex-col items-center pt-[70px] pb-[30px] font-bold text-[19px]">
+    {% csrf_token %}
+    
+    <label for="username" class="w-[30%] ml-[-5rem] mb-[5px]">Username</label>
+    <input type="text" id="username" name="username" class="w-[70%] md:w-[40%] h-[50px] mb-4 text-center border-white border-solid rounded-[35px] bg-[#ca8dfd] text-[20px] font-bold font-poppins" />
+    
+    <label for="password" class="w-[30%] ml-[-5rem] mb-[5px]">Password</label>
+    <input type="password" id="password" name="password" class="w-[70%] md:w-[40%] h-[50px] mb-4 text-center border-white border-solid rounded-[35px] bg-[#ca8dfd] text-[20px] font-bold font-poppins" />
+     
+    <div class="submit flex flex-col items-center justify-center">
+      <input
+        id="login"
+        type="submit"
+        value="Login"
+        class="w-[130px] h-[45px] mb-2 rounded-[25px] text-[#761EAE] bg-white text-[15px] font-extrabold cursor-pointer transition-transform hover:scale-110"
+      />
+      <a href="{% url 'online' file_root=1 %}" class="text-white no-underline transition-transform hover:scale-110">return</a>
+    </div>
+  </form>
 </div>
 {% endblock content %}
