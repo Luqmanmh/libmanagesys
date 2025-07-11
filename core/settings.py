@@ -15,7 +15,7 @@ SECRET_KEY = 'your-secret-here'
 DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
-CSRF_TRUSTED_ORIGINS = ["https://perpussidomukti.up.railway.app", "localhost", "127.0.0.1"]
+CSRF_TRUSTED_ORIGINS = ["https://perpussidomukti.up.railway.app", "http://localhost", "http://127.0.0.1"]
 
 TAILWIND_APP_NAME = 'theme'
 
