@@ -459,6 +459,12 @@
   .mr-16 {
     margin-right: calc(var(--spacing) * 16);
   }
+  .mr-20 {
+    margin-right: calc(var(--spacing) * 20);
+  }
+  .mr-24 {
+    margin-right: calc(var(--spacing) * 24);
+  }
   .mr-\[0\.7rem\] {
     margin-right: 0.7rem;
   }
@@ -743,8 +749,23 @@
   .overflow-hidden {
     overflow: hidden;
   }
+  .overflow-x-auto {
+    overflow-x: auto;
+  }
+  .overflow-x-clip {
+    overflow-x: clip;
+  }
+  .overflow-x-hidden {
+    overflow-x: hidden;
+  }
   .overflow-x-scroll {
     overflow-x: scroll;
+  }
+  .overflow-y-auto {
+    overflow-y: auto;
+  }
+  .overflow-y-hidden {
+    overflow-y: hidden;
   }
   .overflow-y-scroll {
     overflow-y: scroll;
@@ -966,6 +987,24 @@
     --tw-tracking: var(--tracking-normal);
     letter-spacing: var(--tracking-normal);
   }
+  .break-words {
+    overflow-wrap: break-word;
+  }
+  .break-all {
+    word-break: break-all;
+  }
+  .overflow-ellipsis {
+    text-overflow: ellipsis;
+  }
+  .text-ellipsis {
+    text-overflow: ellipsis;
+  }
+  .whitespace-normal {
+    white-space: normal;
+  }
+  .whitespace-nowrap {
+    white-space: nowrap;
+  }
   .text-\[\#761EAE\] {
     color: #761EAE;
   }
@@ -1076,11 +1115,6 @@
   @media (width >= 48rem) {
     .md\:w-\[40\%\] {
       width: 40%;
-    }
-  }
-  @media (width >= 48rem) {
-    .md\:w-\[70rem\] {
-      width: 70rem;
     }
   }
   @media (width >= 48rem) {

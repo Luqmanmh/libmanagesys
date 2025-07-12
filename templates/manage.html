@@ -71,6 +71,7 @@
                     <div class="btn_cancel md:mr-0 mr-16 bg-none text-black mb-2 text-right ">
                         <button type="button" class="btn_cancel" data-target="#fileform" id="btn_cancel">X</button>
                     </div>
+                    <h3>Tambah Buku</h3>
                     <form action="/uploadfile/{{ root }}" method="POST" class="form-container"
                         enctype="multipart/form-data" style="text-align: center;">
                         {% csrf_token %}
@@ -95,7 +96,7 @@
                         enctype="multipart/form-data">
                         {% csrf_token %}
                         <div class="text-left">
-                            <label for="foldname" class="text-left">Enter Folder Name</label>
+                            <label for="foldname" class="text-left">Tambah Nama Kelas Buku</label>
                             <input type="text" name="foldname" id="foldname">
                         </div>
                         <br>
@@ -106,8 +107,8 @@
             {% endif %}
         </div>
 
-        <div class="tablecont overflow-x-scroll scroll-auto">
-            <table class="maintable mx-auto border-spacing-y-[0.08rem] md:w-full">
+        <div class="tablecont overflow-x-scroll scroll-auto md:w-full">
+            <table class="maintable mx-auto border-spacing-y-[0.08rem] md:w-full break-words whitespace-normal">
                 {% if root == 1%}
                 <tr class="bg-[#D9D9D9] border-[0.5rem] border-[#D9D9D9]">
                     <th class="rounded-tl-[15px] p-[.7rem]">Kelompok Buku</th>
@@ -148,7 +149,7 @@
                                     class="fa-solid fa-pen-to-square"></i></a>
 
                             <div class="popform" id="updfold{{i.id}}">
-                                <div class="btn_cancel bg-none text-black mb-2 text-right">
+                                <div class="btn_cancel bg-none text-black mb-2 text-right max-w-screen">
                                     <button type="button" class="btn_cancel " data-target="#updfold{{i.id}}"
                                         id="btn_cancel">X</button>
                                 </div>
@@ -219,7 +220,7 @@
 
                             <div class="popform" id="editfile{{i.id}}">
                                 <div id="fileform">
-                                    <div class="btn_cancel mr-16 md:mr-0 bg-none text-black mb-2 text-right">
+                                    <div class="btn_cancel mr-16 md:mr-0 bg-none text-black mb-2 text-right max-w-screen">
                                         <button type="button" class="btn_cancel " data-target="#editfile{{i.id}}"
                                             id="btn_cancel">X</button>
                                     </div>
