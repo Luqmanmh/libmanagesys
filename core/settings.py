@@ -22,7 +22,7 @@ CSRF_TRUSTED_ORIGINS = ["https://perpussidomukti.up.railway.app", "http://localh
 TAILWIND_APP_NAME = 'theme'
 
 INTERNAL_IPS = [
-    '127.0.0.1',
+    '127.0.0.1'
 ]
 
 NPM_BIN_PATH = 'npm.cmd'
