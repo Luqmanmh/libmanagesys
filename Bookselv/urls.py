@@ -6,6 +6,7 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
     path('', views.blink, name='blink'),
+    path('googlec1a42a4e2b9a75aa.html', views.gverif, name='gverif'),
     path('online/f/<int:file_root>', views.index, name='online'),
     # path('login/', views.loginusr, name='loginusr'),
     path('login/', views.loginadm, name='loginadm'),

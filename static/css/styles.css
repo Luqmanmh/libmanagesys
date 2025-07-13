@@ -21,6 +21,8 @@
     --spacing: 0.25rem;
     --text-sm: 0.875rem;
     --text-sm--line-height: calc(1.25 / 0.875);
+    --text-base: 1rem;
+    --text-base--line-height: calc(1.5 / 1);
     --text-xl: 1.25rem;
     --text-xl--line-height: calc(1.75 / 1.25);
     --text-5xl: 3rem;
@@ -365,6 +367,9 @@
       max-width: 96rem;
     }
   }
+  .m-0 {
+    margin: calc(var(--spacing) * 0);
+  }
   .mx-\[\.25rem\] {
     margin-inline: .25rem;
   }
@@ -429,6 +434,12 @@
       border-inline-start: var(--border) solid color-mix(in oklab, currentColor 10%, #0000);
     }
   }
+  .-mt-2 {
+    margin-top: calc(var(--spacing) * -2);
+  }
+  .-mt-4 {
+    margin-top: calc(var(--spacing) * -4);
+  }
   .mt-2 {
     margin-top: calc(var(--spacing) * 2);
   }
@@ -458,12 +469,6 @@
   }
   .mr-16 {
     margin-right: calc(var(--spacing) * 16);
-  }
-  .mr-20 {
-    margin-right: calc(var(--spacing) * 20);
-  }
-  .mr-24 {
-    margin-right: calc(var(--spacing) * 24);
   }
   .mr-\[0\.7rem\] {
     margin-right: 0.7rem;
@@ -749,23 +754,8 @@
   .overflow-hidden {
     overflow: hidden;
   }
-  .overflow-x-auto {
-    overflow-x: auto;
-  }
-  .overflow-x-clip {
-    overflow-x: clip;
-  }
-  .overflow-x-hidden {
-    overflow-x: hidden;
-  }
   .overflow-x-scroll {
     overflow-x: scroll;
-  }
-  .overflow-y-auto {
-    overflow-y: auto;
-  }
-  .overflow-y-hidden {
-    overflow-y: hidden;
   }
   .overflow-y-scroll {
     overflow-y: scroll;
@@ -797,9 +787,17 @@
   .rounded-tr-\[15px\] {
     border-top-right-radius: 15px;
   }
+  .border {
+    border-style: var(--tw-border-style);
+    border-width: 1px;
+  }
   .border-2 {
     border-style: var(--tw-border-style);
     border-width: 2px;
+  }
+  .border-\[\.5px\] {
+    border-style: var(--tw-border-style);
+    border-width: .5px;
   }
   .border-\[\.025rem\] {
     border-style: var(--tw-border-style);
@@ -878,6 +876,9 @@
   .object-cover {
     object-fit: cover;
   }
+  .p-4 {
+    padding: calc(var(--spacing) * 4);
+  }
   .p-\[\.7rem\] {
     padding: .7rem;
   }
@@ -936,6 +937,10 @@
     font-size: var(--text-5xl);
     line-height: var(--tw-leading, var(--text-5xl--line-height));
   }
+  .text-base {
+    font-size: var(--text-base);
+    line-height: var(--tw-leading, var(--text-base--line-height));
+  }
   .text-sm {
     font-size: var(--text-sm);
     line-height: var(--tw-leading, var(--text-sm--line-height));
@@ -989,15 +994,6 @@
   }
   .break-words {
     overflow-wrap: break-word;
-  }
-  .break-all {
-    word-break: break-all;
-  }
-  .overflow-ellipsis {
-    text-overflow: ellipsis;
-  }
-  .text-ellipsis {
-    text-overflow: ellipsis;
   }
   .whitespace-normal {
     white-space: normal;

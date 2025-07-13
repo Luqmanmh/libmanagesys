@@ -14,6 +14,9 @@ from django.http import FileResponse, Http404
 from django.core.paginator import Paginator
 
 
+def gverif(request):
+    return render(request, "googlec1a42a4e2b9a75aa.html")
+
 def index(request, file_root):
     infolder_all = Folder.objects.filter(parent_folder_id = file_root).order_by('folder_name')
     infile_all = Book.objects.filter(parent_folder_id = file_root).order_by('Title')
