@@ -45,7 +45,7 @@ def index(request, file_root):
 
 
 def blink(request):
-    return redirect('online/f/1')
+    return redirect('online', file_root=1)
 
 
 def check_admin(user):
@@ -106,7 +106,7 @@ def userpanel(request):
                     user.save()
                     messages.info(request, 'Edit successful')
                     login(request, user)
-                    return redirect('/online/f/1')
+                    return redirect('online', file_root=1)
             else:
                 messages.info(request, 'Password does not match')
                 return redirect('/userpanel/')
@@ -121,7 +121,7 @@ def userpanel(request):
 #         user = authenticate(request, username=username, password=password)
 #         if user is not None:
 #             login(request, user)
-#             return redirect('/online/f/1')
+#             return redirect('online', file_root=1)
 #         else:
 #             messages.error(request, "There was an error logging in. Please try again.")
 #             return redirect('loginusr')
@@ -137,7 +137,7 @@ def loginadm(request):
         if user is not None:
             if user.is_superuser:
                 login(request, user)
-                return redirect('/manage/f/1')
+                return redirect('manage', file_root=1)
             else:
                 messages.error(request, "There was an error logging in. Please try again.")
                 return redirect('loginadm')    
@@ -254,7 +254,7 @@ def delete_file(request, pk):
 def logoutusr(request):
     logout(request)
     messages.success(request, ("You Were Logged Out!"))
-    return redirect('/online/f/1')
+    return redirect('online', file_root=1)
 
 
     
@@ -320,12 +320,14 @@ def search_file(request):
     resi = []
     reso = []
     
-    resi = Book.objects.filter(Title__contains = quest)
-    reso = Folder.objects.filter(folder_name__contains = quest)
+    resi = Book.objects.filter(Title__icontains = quest)
+    reso = Folder.objects.filter(folder_name__icontains = quest)
     
     cont = {
         "infolder" : reso,
-        "infile" : resi
+        "infile" : resi,
+        "query" : quest,
+        "root" : 1
     }
 
     return render(request, 'manage.html', cont)   
@@ -336,15 +338,17 @@ def search_fileu(request):
     resi = []
     reso = []
     
-    resi = Book.objects.filter(Title__contains = quest)
-    reso = Folder.objects.filter(folder_name__contains = quest)
+    resi = Book.objects.filter(Title__icontains = quest)
+    reso = Folder.objects.filter(folder_name__icontains = quest)
     
     cont = {
         "infolder" : reso,
-        "infile" : resi
+        "infile" : resi,
+        "query" : quest,
+        "root" : 1
     }
 
-    return render(request, 'online.html', cont)   
+    return render(request, 'online.html', cont)
 
 
 @login_required(login_url='loginusr')

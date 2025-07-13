@@ -10,7 +10,7 @@
 <nav class="md:flex items-center justify-between pt-[25px] px-[25px]">
     <div class="logo md:block flex justify-between md:justify-normal mb-4 md:mb-0 align-middle">
         <div>
-            <a href="/manage/f/1">
+            <a href="{% url 'manage' file_root=1 %}">
                 <img src="{% static 'img/Component1.png' %}" width="200px" alt="logo" class="hidden md:block">
                 <img src="{% static 'img/bs1.png' %}" width="40rem" alt="logo" class="block md:hidden">
             </a>
@@ -109,9 +109,10 @@
 
         <div class="tablecont overflow-x-scroll scroll-auto md:w-full">
             <table class="maintable mx-auto border-spacing-y-[0.08rem] md:w-full break-words whitespace-normal">
-                {% if root == 1%}
+                {% if root == 1 and not "manage/s/" in request.path %}
                 <tr class="bg-[#D9D9D9] border-[0.5rem] border-[#D9D9D9]">
                     <th class="rounded-tl-[15px] p-[.7rem]">Kelompok Buku</th>
+                    <th class="p-[.7rem]"></th>
                     <th class="p-[.7rem]"></th>
                     <th class="p-[.7rem]"></th>
                     <th class="p-[.7rem]"></th>
@@ -138,6 +139,7 @@
 
                 <tr>
                     <td><a href="/manage/f/{{i.id}}">{{i.folder_name}}</a></td>
+                    <td></td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -184,7 +186,7 @@
                     <td>
                         <div class="filechange">
                             <a class="open-filein" data-target="#updfile{{i.id}}"><i
-                                    class="fa-solid fa-arrows-up-down-left-right"></i></a>
+                                    class="fa-solid fa-arrows-up-down-left-right "></i></a>
                             <div class="popform" id="updfile{{i.id}}">
                                 <div class="btn_cancel bg-none text-black mb-2 text-right" id="btn_cancel">
                                     <button type="button" class="btn_cancel" data-target="#updfile{{i.id}}">X</button>

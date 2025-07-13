@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /manage/
+
+Sitemap: https://perpussidomukti.up.railway.app/sitemap.xml
