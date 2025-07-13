@@ -36,7 +36,7 @@ urlpatterns = [
     path('developer', views.dev_page, name='dev_page'),
     path('book/<int:id>/', views.book_detail, name='book_detail'),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name="sitemap"),
-    path('robots.txt', TemplateView.as_view(template_name = "robots.txt", content_type = "text/plain")),
+    path('robots.txt', TemplateView.as_view(template_name = "robots.txt", content_type = "text/plain"), name="robots"),
     
 ]
 
