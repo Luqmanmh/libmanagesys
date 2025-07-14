@@ -94,7 +94,7 @@
 
     <div class="tablecar flex flex-wrap md:justify-start md:gap-6 justify-evenly md:w-[90%] mx-auto my-20">
         {% for i in infolder %}
-        <div class="cardcover md:mx-4 mx-[.25rem] mb-8">
+        <div class="cardcover md:mx-4 mx-4 mb-8">
             <a href="{% url 'online' file_root=i.id %}" class="text-black">
                 <div class="card md:w-[11rem] w-[9rem]">
                     <img class="card-img-top w-[10.9rem] h-[11rem] object-cover" src="{% static 'img/shelf.png' %}"
@@ -109,7 +109,7 @@
         {% endfor %}
 
         {% for i in infile %}
-        <div class="cardcover md:mx-4 mx-[.25rem] mb-8">
+        <div class="cardcover md:mx-4 mx-4 mb-8">
             <a href="{% url 'book_detail' id=i.id %}" class="text-black">
                 <div class="card md:w-[11rem] w-[9rem]">
                     {% if i.img %}
