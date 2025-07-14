@@ -57,8 +57,10 @@
       <p>{{ book.ddc }}</p>
       <h5 class="font-bold">Jumlah</h5>
       <p>{{ book.count }}</p>
+      {% if book.synopsis %}
       <h5 class="font-bold">Sinopsis</h5>
-      <p>{{ book.synopsis }}</p>
+      <p>{{ book.synopsis|linebreaksbr }}</p>
+      {% endif %}
     </div>
   </div>
 </div>
