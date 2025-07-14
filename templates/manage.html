@@ -160,6 +160,7 @@
                                     {% csrf_token %}
                                     <label for="newname">Name</label>
                                     <input type="text" name="newname" id="newname" value="{{i.folder_name}}"> <br> <br>
+                                    <input type="hidden" name="newfk" id="newfk" value="{{i.parent_folder_id}}">
                                     <div style="text-align: center;">
                                         <input type="submit" class="mt-4 px-4 py-2 bg-purple-600 text-white rounded-md hover:bg-purple-700 cursor-pointer transition">
                                     </div>
