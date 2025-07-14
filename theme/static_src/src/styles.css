@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @plugin "daisyui";
 @plugin "@tailwindcss/forms";
+/* @plugin ""; */
 
 /**
   * A catch-all path to Django template files, JavaScript, and Python files
