@@ -45,7 +45,8 @@ def index(request, file_root):
 
 
 def blink(request):
-    return redirect('online', file_root=1)
+    return render(request, 'blink.html')
+    # return redirect('online', file_root=1)
 
 
 def check_admin(user):
