@@ -35,7 +35,7 @@
     <script src="https://kit.fontawesome.com/c75057c9b4.js" crossorigin="anonymous"></script>
     {% block css %}{% endblock %}
     {% tailwind_css %}
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <!-- <link rel="stylesheet" href="{% static 'css/styles.css' %}"> -->
     <style>
         a {
             text-decoration: none;
@@ -54,16 +54,6 @@
     </script>
     
 </head>
-
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-LLJQ4GE09C"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-LLJQ4GE09C');
-</script>
 
 <body class="min-h-screen flex flex-col" {% block body_class %} {% endblock %}>
 
