@@ -8,7 +8,7 @@ class Folder(models.Model):
   parent_folder = models.ForeignKey("self", null=True, blank=True, on_delete=models.CASCADE)
   
 class Book(models.Model):
-  Title = models.CharField(max_length=255)
+  Title = models.CharField(max_length=512)
   upload_date = models.DateTimeField(auto_now_add=True)
   parent_folder = models.ForeignKey(Folder, null=True, on_delete=models.CASCADE)
   img = models.ImageField(upload_to='previews/', null=True, blank=True, storage=MediaCloudinaryStorage())
