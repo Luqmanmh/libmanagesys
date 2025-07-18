@@ -55,8 +55,8 @@ def check_admin(user):
 @login_required(login_url='loginadm')
 @user_passes_test(check_admin)
 def manage(request, file_root):
-    infolder = Folder.objects.filter(parent_folder_id = file_root)
-    infile = Book.objects.filter(parent_folder_id = file_root)
+    infolder = Folder.objects.filter(parent_folder_id = file_root).order_by("folder_name")
+    infile = Book.objects.filter(parent_folder_id = file_root).order_by("Title")
     allfold = Folder.objects.exclude(pk = 1)
     
     if Folder.objects.get(pk = file_root).parent_folder is not None:
