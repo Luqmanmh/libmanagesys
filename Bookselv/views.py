@@ -133,6 +133,8 @@ def userpanel(request):
 def loginadm(request):
     if request.method == "POST":
         username = request.POST['username']
+        if username is None:
+            messages.error(request, "Username cannot be empty")
         password = request.POST['password']
         user = authenticate(request, username=username, password=password)
         if user is not None:
@@ -140,10 +142,10 @@ def loginadm(request):
                 login(request, user)
                 return redirect('manage', file_root=1)
             else:
-                messages.error(request, "There was an error logging in. Please try again.")
+                messages.error(request, "User is not an admin, use an admin account")
                 return redirect('loginadm')    
         else:
-            messages.error(request, "There was an error logging in. Please try again.")
+            messages.error(request, "Username or Password is incorrect. Please try again.")
             return redirect('loginadm')
     return render(request, 'login_adm.html')
 
