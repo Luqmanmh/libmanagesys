@@ -101,7 +101,7 @@
     {% endfor %}
 
     {% for i in infile %}
-    <div class="cardcover md:mx-4 mx-4 mb-8">
+    <div class="cardcover md:mx-auto mx-4 mb-8">
       <a href="{% url 'book_detail' id=i.id %}" class="text-black">
         <div class="card md:w-[11rem] w-[9rem]">
           {% if i.img %}

@@ -325,12 +325,14 @@ def search_file(request):
     
     resi = Book.objects.filter(Title__icontains = quest)
     reso = Folder.objects.filter(folder_name__icontains = quest)
+    fold = Folder.objects.all()
     
     cont = {
         "infolder" : reso,
         "infile" : resi,
         "query" : quest,
-        "root" : 1
+        "root" : 1,
+        "allfold": fold,
     }
 
     return render(request, 'manage.html', cont)   

@@ -41,9 +41,9 @@
   <div class="book-container bg-white w-[50rem] md:h-[30rem] min-w-[20rem] min-h-[30rem] rounded-lg border-2 border-gray-300 overflow-hidden md:flex">
     <div class="imgcont md:w-[25rem] w-[15rem] mx-auto md:mx-0 gap-8 md:gap-0">
       {% if book.img %}
-      <img class="card-imgtop md:w-[25rem] w-[15rem] md:rounded-l-lg object-cover mx-auto" src="{{ book.img.url }}" alt="{{ book.Title }}">
+      <img class="card-imgtop md:w-[25rem] w-[15rem] md:rounded-l-lg object-cover mx-auto h-full" src="{{ book.img.url }}" alt="{{ book.Title }}">
       {% else %}
-      <img class="card-imgtop md:w-[25rem] w-[10rem] md:rounded-l-lg object-cover mx-auto" src="{% static 'img/book.jpg' %}" alt="default book cover">
+      <img class="card-imgtop md:w-[25rem] w-[10rem] md:rounded-l-lg object-cover mx-auto h-full" src="{% static 'img/book.jpg' %}" alt="default book cover">
       {% endif %}
     </div>
     <div class="detcont px-8 py-12 md:w-[25rem] h-[30rem] overflow-y-scroll space-y-3 break-words whitespace-normal">
